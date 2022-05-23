@@ -57,7 +57,7 @@ public class Citta {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) {  //confronto per nome che è univoco
 		if (this == obj)
 			return true;
 		if (obj == null)

@@ -54,14 +54,14 @@ public class Model {
 	 * @return la lista delle città da visitare nei primi 15 giorni del mese
 	 */
 	public List<Citta> trovaSequenza(int mese){
-		List <Citta> parziale = new ArrayList<>();
+		List <Citta> parziale = new ArrayList<>(); //ogni volta creo una lista vuota, "pulita"
 		this.best = null;
 		
 		MeteoDAO dao = new MeteoDAO();
 		
 		//carica dentro ciascuna delle leCitta la lista dei rilevamenti nel mese considerato (e solo quello)
 		for (Citta c: leCitta) {
-			c.setRilevamenti(dao.getAllRilevamentiLocalitaMese(mese, c)); 
+			c.setRilevamenti(dao.getAllRilevamentiLocalitaMese(mese, c));
 		}
 		//System.out.println("RICERCA MESE "+Integer.toString(mese));
 		cerca(parziale,0);
@@ -82,11 +82,9 @@ public class Model {
 		if (livello== NUMERO_GIORNI_TOTALI) {
 			//caso terminale
 			Double costo = calcolaCosto(parziale);
-			if (best ==null || costo < calcolaCosto(best)) {
-				//System.out.format("%f %s\n", costo, parziale);
+			if (best ==null || costo < calcolaCosto(best)) { //se best è ancora una lista nulla o il costo totale è inferiore a al costo della sequenza precedente
 				best = new ArrayList<>(parziale);
 			}
-			//System.out.println(parziale);
 		}else {
 			//caso intermedio
 			for (Citta prova: leCitta) {

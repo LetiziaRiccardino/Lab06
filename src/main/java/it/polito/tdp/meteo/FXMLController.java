@@ -58,7 +58,7 @@ public class FXMLController {
     void doCalcolaUmidita(ActionEvent event) {
     	
     	//Month m = boxMese.getValue();
-    	Integer m = boxMese.getValue(); //int cannot be null so I use Integer here to then allow the control below
+    	Integer m = boxMese.getValue(); //int non può essere null, quindi uso Integer qui per consentire il controllo seguente
     	
     	if(m!=null) {
     		txtResult.appendText(String.format("Dati del mese %s\n", Integer.toString(m)));
@@ -87,7 +87,7 @@ public class FXMLController {
     	}
     }
     
-    public void setModel (Model m) {
+    public void setModel (Model m) { //set 
     	this.model = m;
     	setChoiceMesi();
     }
